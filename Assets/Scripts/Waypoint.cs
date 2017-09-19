@@ -26,6 +26,9 @@ public class Waypoint : MonoBehaviour
 	private AudioSource _audio_source			= null;
 	private Material	_material				= null;
 
+    [Header("Camera")]
+    public GameObject CameraObject;
+
 	[Header("Material")]
 	public Material	material					= null;
 	public Color color_hilight					= new Color(0.8f, 0.8f, 1.0f, 0.125f);	
@@ -65,7 +68,7 @@ public class Waypoint : MonoBehaviour
 
 	void Update()
 	{
-		bool occupied 	= Camera.main.transform.position == gameObject.transform.position;
+		bool occupied 	= CameraObject.transform.position == gameObject.transform.position;
 		
 		switch(_state)
 		{
