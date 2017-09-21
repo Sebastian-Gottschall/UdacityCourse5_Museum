@@ -29,6 +29,9 @@ public class Waypoint : MonoBehaviour
     [Header("Camera")]
     public GameObject CameraObject;
 
+    [Header("Player Settings")]
+    public float player_height                  = 2.00f;
+
 	[Header("Material")]
 	public Material	material					= null;
 	public Color color_hilight					= new Color(0.8f, 0.8f, 1.0f, 0.125f);	
@@ -133,11 +136,12 @@ public class Waypoint : MonoBehaviour
 		
 		_audio_source.Play();
 
-		Camera.main.transform.position 	= gameObject.transform.position;
-	}
+        //Camera.main.transform.position 	= gameObject.transform.position;
+        Camera.main.transform.position = new Vector3(gameObject.transform.position.x, player_height, gameObject.transform.position.z);
+    }
 
 
-	private void Idle()
+    private void Idle()
 	{
 		float scale				= Mathf.Lerp(scale_idle_min, scale_idle_max, _animated_lerp);
 		Color color				= Color.Lerp(_color_origional, 	  color_hilight, _animated_lerp);
